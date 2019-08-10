@@ -1,0 +1,13 @@
+{
+  "name": "slackreminder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "kotamat <kota1861@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.1"
+  }
+}
