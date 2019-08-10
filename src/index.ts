@@ -1,6 +1,11 @@
-import { WebClient } from "@slack/web-api";
+import { WebClient, WebAPICallOptions } from "@slack/web-api";
 import * as yargs from "yargs";
 
+type ChannelInfo = {
+  channel: {
+    members: string[];
+  };
+};
 const argv = yargs.options({
   token: {
     type: "string",
@@ -21,7 +26,16 @@ const channelId = argv.channel;
 
 const web = new WebClient(token);
 
+//type guards
+function hasChannelInfo(res: WebAPICallOptions): res is ChannelInfo {
+  return (res as ChannelInfo).channel !== undefined;
+}
+
 (async (): Promise<void> => {
   // fetch all user in this channel
-  web.channels.info({ channel: channelId });
+  const info = await web.channels.info({ channel: channelId });
+  if (hasChannelInfo(info)) {
+    const members = info.channel.members;
+    console.log(members);
+  }
 })();
