@@ -4,11 +4,21 @@
   "main": "index.js",
   "author": "kotamat <kota1861@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/** --ext .ts,.tsx",
+    "lint:fix": "yarn lint --fix"
+  },
   "dependencies": {
     "@slack/web-api": "^5.1.0",
     "typescript": "^3.5.3"
   },
   "devDependencies": {
-    "@types/node": "^12.7.1"
+    "@types/node": "^12.7.1",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
   }
 }
