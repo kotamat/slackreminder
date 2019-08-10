@@ -5,6 +5,7 @@
   "author": "kotamat <kota1861@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@slack/web-api": "^5.1.0",
     "typescript": "^3.5.3"
   },
   "devDependencies": {
