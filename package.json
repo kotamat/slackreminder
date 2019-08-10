@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@slack/web-api": "^5.1.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
     "@types/node": "^12.7.1",
+    "@types/yargs": "^13.0.2",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "eslint": "^6.1.0",
