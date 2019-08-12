@@ -16,6 +16,11 @@ const argv = yargs.options({
     type: "string",
     alias: "c",
     demandOption: true
+  },
+  thread_ts: {
+    type: "string",
+    alias: "s",
+    demandOption: true
   }
 }).argv;
 
@@ -23,6 +28,7 @@ const argv = yargs.options({
 // const channelId = process.env.CHANNEL_ID;
 const token = argv.token;
 const channelId = argv.channel;
+const thread_ts = argv.thread_ts;
 
 const web = new WebClient(token);
 
@@ -36,6 +42,19 @@ function hasChannelInfo(res: WebAPICallOptions): res is ChannelInfo {
   const info = await web.channels.info({ channel: channelId });
   if (hasChannelInfo(info)) {
     const members = info.channel.members;
-    console.log(members);
+
+    const message = members.map(id => `<@${id}>`).join(" ") + " リマインドです";
+
+    const res = await web.chat.postMessage({
+      channel: channelId,
+      text: message,
+      thread_ts: thread_ts,
+      as_user: true
+    });
+    if (res.error !== undefined) {
+      console.error(res.error);
+    }
+
+    console.log(res.ok);
   }
 })();
